@@ -1,0 +1,50 @@
+name: Build and Push starmetal images
+
+on:
+  push:
+    branches:
+      - starmetal
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Optional extra tag (e.g., rc-1). Leave empty to skip."
+        required: false
+        default: ""
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        include:
+          - name: service
+            dockerfile: docker/wvp/Dockerfile
+            image: starmetal/wvp-service
+          - name: web
+            dockerfile: docker/nginx/Dockerfile
+            image: starmetal/wvp-web
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push ${{ matrix.name }} image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ matrix.image }}:latest,${{ matrix.image }}:${{ github.sha }}${{ github.event.inputs.tag != '' && format(',{0}:{1}', matrix.image, github.event.inputs.tag) || '' }}
+

@@ -1,13 +1,13 @@
 <!--
 Sync Impact Report
-- Version: N/A → 1.0.0
-- Modified Principles: 初始化为 5 条核心原则
-- Added Sections: 工程约束, 研发流程与质量门禁
+- Version: 1.0.0 → 1.1.0
+- Modified Principles: 无
+- Added Sections: 无
 - Removed Sections: 无
 - Templates requiring updates:
-  - .specify/templates/plan-template.md ✅ 与原则一致（保持占位符，由 Constitution Check 读取）
-  - .specify/templates/spec-template.md ✅ 无需调整
-  - .specify/templates/tasks-template.md ✅ 无需调整
+  - .specify/templates/plan-template.md ✅
+  - .specify/templates/spec-template.md ✅
+  - .specify/templates/tasks-template.md ✅
 - Follow-up TODOs: 无
 -->
 
@@ -68,5 +68,6 @@ Sync Impact Report
   - MINOR：新增原则或显著扩展约束
   - PATCH：表述澄清、不改语义
 - 合规检查：PR、CI、发布前检查须显式标记宪章符合性，违反项需列出理由与整改计划；重大违规应阻断上线。
+- 提交规范：Git 提交消息遵循 `<type>(<scope>): <subject>` 约定，type 取自常见枚举（feat/fix/docs/style/refactor/perf/test/chore/revert/build），subject 超过两点时使用要点列表分行描述，避免自动提交或无测试验证的提交（参考 [git.mdc](https://raw.githubusercontent.com/rikugun/cursor-rules/main/other/git.mdc)）。
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
+**Version**: 1.1.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
