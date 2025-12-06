@@ -7,8 +7,8 @@
 
 **Purpose**: 准备工作流目录与文件骨架。
 
-- [ ] T001 确认工作流目录存在 `.github/workflows/`
-- [ ] T002 创建工作流文件骨架 `.github/workflows/starmetal-build.yml`
+- [X] T001 确认工作流目录存在 `.github/workflows/`
+- [X] T002 创建工作流文件骨架 `.github/workflows/starmetal-build.yml`
 
 ---
 
@@ -30,11 +30,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T004 [US1] 定义触发条件（push 分支 `starmetal` + `workflow_dispatch` 输入 tag）于 `.github/workflows/starmetal-build.yml`
-- [ ] T005 [US1] 配置 Docker Hub 登录步骤（`docker/login-action`）于 `.github/workflows/starmetal-build.yml`
-- [ ] T006 [US1] 配置 buildx 环境与矩阵（service/web，context `.`，Dockerfile 分别 `docker/wvp/Dockerfile`、`docker/nginx/Dockerfile`）于 `.github/workflows/starmetal-build.yml`
-- [ ] T007 [US1] 为矩阵镜像添加多标签（`latest`、`${{ github.sha }}`、可选 `inputs.tag`）并使用 `docker/build-push-action@v5` 推送至 Docker Hub 于 `.github/workflows/starmetal-build.yml`
-- [ ] T008 [US1] 在 `specs/001-starmetal/quickstart.md` 补充 workflow 名称、手动触发示例与拉取验证步骤
+- [X] T004 [US1] 定义触发条件（push 分支 `starmetal` + `workflow_dispatch` 输入 tag）于 `.github/workflows/starmetal-build.yml`
+- [X] T005 [US1] 配置 Docker Hub 登录步骤（`docker/login-action`）于 `.github/workflows/starmetal-build.yml`
+- [X] T006 [US1] 配置 buildx 环境与矩阵（service/web，context `.`，Dockerfile 分别 `docker/wvp/Dockerfile`、`docker/nginx/Dockerfile`）于 `.github/workflows/starmetal-build.yml`
+- [X] T007 [US1] 为矩阵镜像添加多标签（`latest`、`${{ github.sha }}`、可选 `inputs.tag`）并使用 `docker/build-push-action@v5` 推送至 Docker Hub 于 `.github/workflows/starmetal-build.yml`
+- [X] T008 [US1] 在 `specs/001-starmetal/quickstart.md` 补充 workflow 名称、手动触发示例与拉取验证步骤
 
 **Checkpoint**: Workflow 可触发且两镜像成功推送。
 
@@ -45,8 +45,8 @@
 **Purpose**: 文档与可靠性提升。
 
 - [ ] T009 审查 workflow 步骤日志与失败重试策略，必要时补充 `retry`/`timeout-minutes` 注释于 `.github/workflows/starmetal-build.yml`
-- [ ] T010 在 `specs/001-starmetal/plan.md` 记录已创建的 workflow 文件名与触发策略
-- [ ] T011 复核 `specs/001-starmetal/contracts/ci-workflow.md` 与实际 workflow 同步更新标签/矩阵细节
+- [X] T010 在 `specs/001-starmetal/plan.md` 记录已创建的 workflow 文件名与触发策略
+- [X] T011 复核 `specs/001-starmetal/contracts/ci-workflow.md` 与实际 workflow 同步更新标签/矩阵细节
 
 ---
 
